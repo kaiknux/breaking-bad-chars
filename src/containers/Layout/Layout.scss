@@ -1,0 +1,26 @@
+@media screen and (min-width: 350px) {
+    .layout {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        &__headerContainer {
+            width: 100%;
+            max-width: 960px;
+            height: 120px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            img {
+                max-height: 100px;
+            }
+            
+;        }
+        &__contentContainer {
+            width: 100%;
+            max-width: 960px;
+        }
+    }
+}
