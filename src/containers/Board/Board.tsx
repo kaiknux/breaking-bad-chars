@@ -35,7 +35,7 @@ class Board extends Component<Props> {
     return (
       <div className="board">
         <div className="board__cardsArea">
-          {charlist.map(character => (
+          {/* {charlist.map(character => (
             <CharCard
               name={character.name}
               id={character.id}
@@ -44,7 +44,7 @@ class Board extends Component<Props> {
               bio={character.bio}
               image={character.image}
             />
-          ))}
+          ))} */}
         </div>
         <div className="board__navArea">
                     Page 1, 2, 3...
