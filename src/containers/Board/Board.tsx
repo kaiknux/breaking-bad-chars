@@ -1,49 +1,63 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+
+import { Char } from '../../store/redux/characters/types';
+import { ApplicationState } from '../../store';
+
+import * as CharactersActions from '../../store/redux/characters/actions';
+
 import './Board.scss';
 import CharCard from '../CharCard/CharCard';
-import imagemocada from '../../assets/images/ei7tysx2.bmp';
 
-
-interface Props {
+interface StateProps {
+    charlist: Char[]
 }
 
-interface state {
-
+interface DispatchProps {
+    loadRequest(): void
 }
 
 
-export default class board extends Component<Props, state> {
-    state = {
-        card1: {},
-        card2: {},
-        card3: {},
-        card4: {},
-        card5: {},
-        card6: {},
-        card7: {},
-        card8: {},
-    }
+type Props = StateProps & DispatchProps
 
-    componentDidMount () {}
 
-    render() {
+class Board extends Component<Props> {
+  componentDidMount() {
+    const { loadRequest } = this.props;
 
-        return (
-            <div className='board'>
-                <div className='board__cardsArea'>
-                    <CharCard image={imagemocada} name="Walter White" birthdate="05/10/1988" bio="Something useful" status="alive" />
-                    <CharCard image={imagemocada} name="Walter White" birthdate="05/10/1988" bio="Something useful" status="alive" />
-                    <CharCard image={imagemocada} name="Walter White" birthdate="05/10/1988" bio="Something useful" status="alive" />
-                    <CharCard image={imagemocada} name="Walter White" birthdate="05/10/1988" bio="Something useful" status="alive" />
-                    <CharCard image={imagemocada} name="Walter White" birthdate="05/10/1988" bio="Something useful" status="alive" />
-                    <CharCard image={imagemocada} name="Walter White" birthdate="05/10/1988" bio="Something useful" status="alive" />
-                    <CharCard image={imagemocada} name="Walter White" birthdate="05/10/1988" bio="Something useful" status="alive" />
-                    <CharCard image={imagemocada} name="Walter White" birthdate="05/10/1988" bio="Something useful" status="alive" />
-                </div>
-                <div className='board__navArea'>
+    loadRequest();
+  }
+
+  render() {
+    const { charlist } = this.props;
+
+    return (
+      <div className="board">
+        <div className="board__cardsArea">
+          {charlist.map(character => (
+            <CharCard
+              name={character.name}
+              id={character.id}
+              status={character.status}
+              birthdate={character.birthdate}
+              bio={character.bio}
+              image={character.image}
+            />
+          ))}
+        </div>
+        <div className="board__navArea">
                     Page 1, 2, 3...
-                </div>
-            </div>
-        )
-    }
+        </div>
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = (state: ApplicationState) => ({
+  charlist: state.characters.data,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(CharactersActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);
