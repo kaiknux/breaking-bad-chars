@@ -1,0 +1,37 @@
+.cardContainer {
+    width: 200px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: flex-end;
+    align-items: center;
+    background-color: red;
+    margin: 1%;
+    padding: 0.5%;
+    &__flag {
+        width: 70px;
+        height: 32px;
+        position: relative;
+        top: -150px;
+        right: -70px;
+        background-color: green;
+        line-height: 2;
+        text-align: center;
+    }
+    &__name {
+        width: 100%;
+        text-align: left;
+        font-size: 20px
+        padding
+    }
+    &__birthdate {
+
+    }
+    &__bio {
+
+    }
+    &.--empty {
+        opacity: 0;
+    }
+}

@@ -4,17 +4,12 @@ interface Props {
     name: string;
     birthdate: Date;
     bio: string;
-    pic: File;
+    pic: string;
   }
   
-  type OtherProps = {
-    name: string;
-    birthdate: Date;
-    bio: string;
-    pic: File;
-  }
 
-const OtherHeading: React.FC<OtherProps> = ({ name, birthdate, bio, pic }) =>
+
+const OtherHeading: React.FC<Props> = ({ name, birthdate, bio, pic }) =>
   <h1>My Website Heading</h1>
 
 export default OtherHeading;
