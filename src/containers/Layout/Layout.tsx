@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Layout.scss'
 import Header from '../Header/Header'
+import Board from '../Board/Board';
 
 interface Repository {
 }
@@ -26,7 +27,7 @@ export default class layout extends Component<Props, state> {
                     <Header />
                 </div>
                 <div className='layout__contentContainer'>
-
+                    <Board />
                 </div> 
             </div>
         )
